@@ -71,8 +71,4 @@ Sistema completo desenvolvido em Django para gestão de barbearias, com controle
 - python manage.py createsuperuser
 
 # Inicie o servidor
-<<<<<<< HEAD
 - python manage.py runserver
-=======
-- python manage.py runserver
->>>>>>> 7ef35df5e4386cd4e776269ed16e2b66554e3fb3
