@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Produtos para Repor{% endblock %}
+
+{% block page_title %}Produtos para Repor{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        {% if produtos_repor %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Estoque Atual</th>
+                        <th>Estoque Mínimo</th>
+                        <th>Diferença</th>
+                        <th>Fornecedor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos_repor %}
+                    <tr>
+                        <td>{{ produto.nome }}</td>
+                        <td class="text-danger fw-bold">{{ produto.quantidade }}</td>
+                        <td>{{ produto.quantidade_minima }}</td>
+                        <td class="text-danger fw-bold">
+                            {{ produto.quantidade_minima|subtract:produto.quantidade }}
+                        </td>
+                        <td>{{ produto.fornecedor|default:"-" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-success">
+            Nenhum produto precisa ser reposto no momento.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Produtos{% endblock %}
+
+{% block page_title %}Estoque{% endblock %}
+
+{% block page_actions %}
+    <a href="{% url 'produto_create' %}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Novo Produto
+    </a>
+    <a href="{% url 'produto_list' %}?repor=1" class="btn btn-warning">
+        <i class="bi bi-exclamation-triangle"></i> Produtos para Repor
+    </a>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Descrição</th>
+                        <th>Estoque</th>
+                        <th>Mínimo</th>
+                        <th>Preço Compra</th>
+                        <th>Preço Venda</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos %}
+                    <tr class="{% if produto.precisa_repor %}table-warning{% endif %}">
+                        <td>{{ produto.nome }}</td>
+                        <td>{{ produto.descricao|truncatechars:30 }}</td>
+                        <td class="{% if produto.precisa_repor %}text-danger fw-bold{% endif %}">
+                            {{ produto.quantidade }}
+                        </td>
+                        <td>{{ produto.quantidade_minima }}</td>
+                        <td>R$ {{ produto.preco_compra|floatformat:2 }}</td>
+                        <td>R$ {{ produto.preco_venda|floatformat:2 }}</td>
+                        <td>
+                            <a href="{% url 'produto_update' produto.pk %}" class="btn btn-sm btn-warning" title="Editar">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center">Nenhum produto cadastrado</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,143 @@
+<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3" style="min-height: calc(100vh - 120px);">
+        <!-- Menu principal (mantive seu código original) -->
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">
+                    <i class="bi bi-speedometer2"></i> Dashboard
+                </a>
+            </li>
+            
+            <!-- Clientes -->
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#clientesMenu" role="button">
+                    <i class="bi bi-people"></i> Clientes <i class="bi bi-chevron-down float-end"></i>
+                </a>
+                <div class="collapse" id="clientesMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'cliente_list' %}active{% endif %}" href="{% url 'cliente_list' %}">
+                                Lista de Clientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'cliente_create' %}active{% endif %}" href="{% url 'cliente_create' %}">
+                                Novo Cliente
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Serviços -->
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#servicosMenu" role="button">
+                    <i class="bi bi-scissors"></i> Serviços <i class="bi bi-chevron-down float-end"></i>
+                </a>
+                <div class="collapse" id="servicosMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'servico_list' %}active{% endif %}" href="{% url 'servico_list' %}">
+                                Lista de Serviços
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'servico_create' %}active{% endif %}" href="{% url 'servico_create' %}">
+                                Novo Serviço
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Atendimentos -->
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#atendimentosMenu" role="button">
+                    <i class="bi bi-calendar-check"></i> Atendimentos <i class="bi bi-chevron-down float-end"></i>
+                </a>
+                <div class="collapse" id="atendimentosMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'atendimento_list' %}active{% endif %}" href="{% url 'atendimento_list' %}">
+                                Lista de Atendimentos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'atendimento_create' %}active{% endif %}" href="{% url 'atendimento_create' %}">
+                                Novo Atendimento
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Caixa -->
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#caixaMenu" role="button">
+                    <i class="bi bi-cash-stack"></i> Caixa <i class="bi bi-chevron-down float-end"></i>
+                </a>
+                <div class="collapse" id="caixaMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'caixa_dashboard' %}active{% endif %}" href="{% url 'caixa_dashboard' %}">
+                                Movimentações
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'movimentacao_create' %}active{% endif %}" href="{% url 'movimentacao_create' %}">
+                                Nova Movimentação
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Estoque -->
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#estoqueMenu" role="button">
+                    <i class="bi bi-box-seam"></i> Estoque <i class="bi bi-chevron-down float-end"></i>
+                </a>
+                <div class="collapse" id="estoqueMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'produto_list' %}active{% endif %}" href="{% url 'produto_list' %}">
+                                Lista de Produtos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'produto_create' %}active{% endif %}" href="{% url 'produto_create' %}">
+                                Novo Produto
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Relatórios -->
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#relatoriosMenu" role="button">
+                    <i class="bi bi-graph-up"></i> Relatórios <i class="bi bi-chevron-down float-end"></i>
+                </a>
+                <div class="collapse" id="relatoriosMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'relatorio_clientes' %}active{% endif %}" href="{% url 'relatorio_clientes' %}">
+                                Relatório de Clientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'relatorio_servicos' %}active{% endif %}" href="{% url 'relatorio_servicos' %}">
+                                Relatório de Serviços
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- Footer adicionado aqui -->
+    <div class="sidebar-footer text-muted p-3" style="position: absolute; bottom: 0; width: 100%;">
+        Barbearia &copy; {% now "Y" %}
+    </div>
+</nav>
+    </div>
+</nav>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}{% if form.instance.pk %}Editar{% else %}Novo{% endif %} Produto{% endblock %}
+
+{% block page_title %}{% if form.instance.pk %}Editar{% else %}Novo{% endif %} Produto{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.nome.id_for_label }}" class="form-label">Nome</label>
+                        {% render_field form.nome class="form-control" %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.fornecedor.id_for_label }}" class="form-label">Fornecedor</label>
+                        {% render_field form.fornecedor class="form-control" %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.descricao.id_for_label }}" class="form-label">Descrição</label>
+                {% render_field form.descricao class="form-control" rows="2" %}
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="{{ form.quantidade.id_for_label }}" class="form-label">Quantidade</label>
+                        {% render_field form.quantidade class="form-control" %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="{{ form.quantidade_minima.id_for_label }}" class="form-label">Quantidade Mínima</label>
+                        {% render_field form.quantidade_minima class="form-control" %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="{{ form.preco_compra.id_for_label }}" class="form-label">Preço de Compra</label>
+                        {% render_field form.preco_compra class="form-control" step="0.01" %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="{{ form.preco_venda.id_for_label }}" class="form-label">Preço de Venda</label>
+                        {% render_field form.preco_venda class="form-control" step="0.01" %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'produto_list' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Cancelar
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i> Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
